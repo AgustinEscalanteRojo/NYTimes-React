@@ -1,11 +1,15 @@
 import React from 'react'
 import Router from './containers/Router'
+import { ThemeProvider } from 'styled-components'
+import theme from './styles/theme'
 
 function App() {
   return (
-    <div>
-      <Router />
-    </div>
+    <ThemeProvider theme={theme}>
+      <div>
+        <Router />
+      </div>
+    </ThemeProvider>
   )
 }
 

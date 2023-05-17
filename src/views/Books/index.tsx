@@ -1,9 +1,9 @@
-import { FC, useCallback, useEffect, useState } from 'react'
+import { FC, memo, useCallback, useEffect, useState } from 'react'
 import { getListBooks } from '../../services/nytime'
 import { Book } from '../../models/Book'
 import Card from '../../components/Card'
-import './styles.css'
 import { useParams } from 'react-router-dom'
+import { BooksList, Container } from './styles'
 
 const Books: FC = () => {
   const [books, setBooks] = useState<Book[]>([])
@@ -27,8 +27,8 @@ const Books: FC = () => {
     return <div>CARGANDO....</div>
   }
   return (
-    <div className="booksContainer">
-      <div className="books">
+    <Container>
+      <BooksList>
         {books.map((book, index) => (
           <Card
             key={index}
@@ -37,9 +37,9 @@ const Books: FC = () => {
             isDetails={true}
           />
         ))}
-      </div>
-    </div>
+      </BooksList>
+    </Container>
   )
 }
 
-export default Books
+export default memo(Books)

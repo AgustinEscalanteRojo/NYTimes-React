@@ -1,9 +1,24 @@
-import { FC } from 'react'
+import { FC, memo } from 'react'
+import { Container } from './styles'
 import type { Props } from './types'
-import './styles.css'
 
-const Button: FC<Props> = ({ children, onClick }) => {
-  return <button onClick={onClick} className="customButton">{children}</button>
+const Button: FC<Props> = ({
+  className,
+  children,
+  onClick,
+  type = 'button',
+  variant = 'primary',
+}) => {
+  return (
+    <Container
+      $variant={variant}
+      className={className}
+      type={type}
+      onClick={onClick}
+    >
+      {children}
+    </Container>
+  )
 }
 
-export default Button
+export default memo(Button)

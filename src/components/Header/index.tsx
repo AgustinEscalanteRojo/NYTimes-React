@@ -1,14 +1,20 @@
-import { FC } from 'react'
-import './styles.css'
+import { FC, memo } from 'react'
+import { Button, Container, Content, Title } from './styles'
+import useLogic from './logic'
 
 const Header: FC = () => {
+  const { handleLogout } = useLogic()
+
   return (
-    <header className="headerContainer">
-      <div className="headerContent">
-        <h2 className="title">NY Times Books</h2>
-      </div>
-    </header>
+    <Container>
+      <Content>
+        <Title>NY Times Books</Title>
+        <Button variant="secondary" onClick={handleLogout}>
+          Logout
+        </Button>
+      </Content>
+    </Container>
   )
 }
 
-export default Header
+export default memo(Header)

@@ -1,7 +1,14 @@
-import { FC, useCallback } from 'react'
-import './styles.css'
-import { Props } from './types'
-import Button from '../Button'
+import { FC, memo, useCallback } from 'react'
+import {
+  Button,
+  Container,
+  Content,
+  ExtraInfo,
+  Footer,
+  FooterContent,
+  Header,
+} from './styles'
+import type { Props } from './types'
 
 const Card: FC<Props> = ({ title, extraInfo, isDetails = false, onClick }) => {
   const handleClick = useCallback(() => {
@@ -11,18 +18,18 @@ const Card: FC<Props> = ({ title, extraInfo, isDetails = false, onClick }) => {
   }, [onClick])
 
   return (
-    <div className="cardContainer">
-      <div className="cardContent">
-        <div className="cardHeader">{title}</div>
-        <div className="cardFooter">
-          <div className="cardFooterContent">
-            <div className="extraInfo">{extraInfo}</div>
+    <Container>
+      <Content>
+        <Header>{title}</Header>
+        <Footer>
+          <FooterContent>
+            <ExtraInfo>{extraInfo}</ExtraInfo>
             {!isDetails && <Button onClick={handleClick}>Detalle</Button>}
-          </div>
-        </div>
-      </div>
-    </div>
+          </FooterContent>
+        </Footer>
+      </Content>
+    </Container>
   )
 }
 
-export default Card
+export default memo(Card)
