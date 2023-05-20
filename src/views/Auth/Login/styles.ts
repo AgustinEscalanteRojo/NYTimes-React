@@ -12,6 +12,7 @@ export const Form = styled.form`
 
 export const FormContent = styled.div`
   padding: 10px;
+  background-color: ${({ theme }) => theme.colors.blue100};
 `
 
 export const InputController = styled.div`

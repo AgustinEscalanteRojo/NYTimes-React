@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import DefaultButton from '../Button'
 
 export const Container = styled.div`
+  background-color: ${({ theme }) => theme.colors.blue100};
   border: 1px solid gray;
   border-radius: 4px;
   height: 15rem;
